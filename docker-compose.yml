@@ -13,8 +13,6 @@ services:
   rails:
     image: registry.gitlab.com/beanieboi/farbsucht-migration:latest
     command: /app/migrate.sh
-    volumes:
-      - .:/app
     environment:
       RAILS_ENV: production
       DATABASE_URL: postgres://farbsucht:farbsucht2018@postgres:5432/farbsucht
