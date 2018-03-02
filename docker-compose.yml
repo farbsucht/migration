@@ -12,7 +12,7 @@ services:
     restart: always
   rails:
     image: registry.gitlab.com/beanieboi/farbsucht-migration:latest
-    command: sh migrate.sh
+    command: /app/migrate.sh
     volumes:
       - .:/app
     environment:
