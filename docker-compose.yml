@@ -1,0 +1,25 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:10-alpine
+    environment:
+      POSTGRES_PASSWORD: farbsucht2018
+      POSTGRES_USER: farbsucht
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./mysql_datadir:/var/lib/mysql
+    restart: always
+  rails:
+    image: registry.gitlab.com/beanieboi/farbsucht-migration:latest
+    command: sh migrate.sh
+    volumes:
+      - .:/app
+    environment:
+      RAILS_ENV: production
+      DATABASE_URL: postgres://farbsucht:farbsucht2018@postgres:5432/farbsucht
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASSWORD: farbsucht2018
+    depends_on:
+      - postgres
+      - mysql
