@@ -11,7 +11,7 @@ services:
       - ./mysql_datadir:/var/lib/mysql
     restart: always
   rails:
-    image: registry.gitlab.com/beanieboi/farbsucht-migration:latest
+    image: r.abwesend.com/farbsucht-migration:latest
     command: /app/migrate.sh
     environment:
       RAILS_ENV: production
